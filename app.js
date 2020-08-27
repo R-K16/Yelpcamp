@@ -18,7 +18,7 @@ var campgroundroute=require("./routes/campground"),
     indexroute     =require("./routes/index");
 //db
 // seedDB();
-mongoose.connect("mongodb://localhost/yelp_camp");
+mongoose.connect("mongodb+srv://Raj:1249@yelpcamp.b9dgv.mongodb.net/yelpcamp?retryWrites=true&w=majority");
 app.use(bodyParser.urlencoded({extended:true}));        
 app.set("view engine","ejs");
 app.use(express.static(__dirname+"/public"));
@@ -51,6 +51,6 @@ app.use("/campground",campgroundroute);
 app.use("/campground/:id/comments",commentroute);
 
 //Start the server
-app.listen(process.env.PORT,process.env.ID,function(){
+app.listen(process.env.PORT || 3000,function(){
     console.log("Start the YELPCAMP Server");
 });
